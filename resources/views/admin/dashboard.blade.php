@@ -7,10 +7,10 @@
             <div class="card">
                 <div class="card-header">File Upload</div>
                 @if(session('success'))
-                <div class="alert alert-success">
+                <div class="alert alert-success" id="successMessage">
                     {{ session('success') }}
                 </div>
-            @endif
+                @endif
                 <div class="card-body">
                     <form action="{{ route('fileUpload') }}" method="POST" enctype="multipart/form-data">
                         @csrf
@@ -18,7 +18,7 @@
                             <label for="file">Choose JSON File:</label>
                             <input type="file" class="form-control-file" id="file" name="file">
                             @error('file')
-                                <div class="text-danger">{{ $message }}</div>
+                            <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <button type="submit" class="btn btn-primary">Upload</button>
@@ -44,12 +44,13 @@
                 <td>{{ $key + 1 }}</td>
                 <td>{{basename($file) }}</td>
                 <td>
-                <a href="{{ route('exportExcel', ['filename' => $file]) }}" class="btn btn-success"> <i class="bi bi-file-excel"></i>Export to Excel</a>
-                <a href="{{ route('deleteFile', ['filename' => $file]) }}" class="btn btn-danger"> <i class="bi bi-trash"></i>Delete File</a>
+                    <a href="{{ route('exportExcel', ['filename' => $file]) }}" class="btn btn-success"> <i class="bi bi-file-excel"></i>Export to Excel</a>
+                    <a href="{{ route('deleteFile', ['filename' => $file]) }}" class="btn btn-danger"> <i class="bi bi-trash"></i>Delete File</a>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
 </div>
+
 @endsection
