@@ -34,6 +34,14 @@
           <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
         </li>
         @endif
+        @if(Auth::user())
+        <li class="nav-item">
+          <form id="dashboard" action="{{ route('dashboard') }}" method="get" style="display: none;">
+            @csrf
+          </form>
+          <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('dashboard').submit();">Dashboard</a>
+        </li>
+        @endif
       </ul>
     </div>
   </div>
