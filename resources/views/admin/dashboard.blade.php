@@ -42,7 +42,7 @@
             @foreach($files as $key => $file)
             <tr>
                 <td>{{ $key + 1 }}</td>
-                <td>{{$file }}</td>
+                <td>{{basename($file) }}</td>
                 <td>
                 <a href="{{ route('exportExcel', ['filename' => $file]) }}" class="btn btn-success"> <i class="bi bi-file-excel"></i>Export to Excel</a>
                 <a href="{{ route('deleteFile', ['filename' => $file]) }}" class="btn btn-danger"> <i class="bi bi-trash"></i>Delete File</a>
