@@ -17,7 +17,7 @@ Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback'])
 Route::middleware('authenticated')->group(function () {
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
-    Route::post('upload', [FileController::class, 'uploadJsonFile'])->name('fileupload');
-    Route::get('export-excel', [FileController::class, 'exportJsonFileToExcel'])->name('exportExcel');
+    Route::post('fileUpload', [FileController::class, 'uploadJsonFile'])->name('fileUpload');
+    Route::get('exportExcel', [FileController::class, 'exportJsonFileToExcel'])->name('exportExcel');
     Route::get('deleteFile', [FileController::class, 'deleteFile'])->name('deleteFile');
 });
